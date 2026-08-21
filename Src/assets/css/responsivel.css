@@ -1,0 +1,386 @@
+/* Arquivo dedicado a ajustes responsivos extras do site */
+@media (max-width: 860px) {
+  .hero-grade {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+/* =========================
+   RESPONSIVIDADE CELULAR
+   ========================= */
+@media (max-width: 600px) {
+
+  .menu-principal .container,
+  .nav-cardapio .container {
+    position: relative;
+  }
+
+  .indicador-rolagem {
+    position: absolute;
+    z-index: 999;
+
+    top: 50%;
+    right: 4px;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translateY(-50%);
+
+    background: #ffffff;
+    color: #5a351f;
+
+    border-radius: 50%;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+    font-size: 20px;
+    font-weight: 900;
+
+    pointer-events: none;
+
+    opacity: 1;
+
+    animation: indicarRolagem 1.2s ease-in-out infinite;
+  }
+
+  .indicador-rolagem.oculto {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @keyframes indicarRolagem {
+    0%, 100% {
+      transform: translateY(-50%) translateX(0);
+    }
+
+    50% {
+      transform: translateY(-50%) translateX(5px);
+    }
+  }
+}
+
+/* Ajustes para tablets e telas intermediárias. */
+@media (max-width: 860px) {
+  .hero-grade {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .carimbo-prato-dia {
+    transform: rotate(0);
+  }
+  .grade-rodape {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* =========================================================
+   INDICADOR DE ROLAGEM HORIZONTAL NO CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  /* ---------------------------------------------------------
+     MENU PRINCIPAL
+     --------------------------------------------------------- */
+
+  .menu-principal .container {
+    position: relative;
+  }
+
+  .nav-menu {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    justify-content: flex-start;
+    gap: 4px;
+    scrollbar-width: none;
+    padding-right: 35px;
+
+    /* Evita que o texto quebre */
+    white-space: nowrap;
+  }
+
+  .nav-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-menu li {
+    flex: 0 0 auto;
+  }
+
+  .nav-menu a {
+    white-space: nowrap;
+  }
+
+
+  /* ---------------------------------------------------------
+     DIAS DA SEMANA
+     --------------------------------------------------------- */
+
+  .nav-cardapio .container {
+    position: relative;
+  }
+
+  .seletor-dias {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 6px;
+    scrollbar-width: none;
+    padding-right: 35px;
+
+    white-space: nowrap;
+  }
+
+  .seletor-dias::-webkit-scrollbar {
+    display: none;
+  }
+
+  .seletor-dias .chip-dia {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+
+  /* ---------------------------------------------------------
+     SETA DE INDICAÇÃO
+     --------------------------------------------------------- */
+
+  .indicador-rolagem {
+    position: absolute;
+    z-index: 10;
+
+    top: 50%;
+    right: 4px;
+
+    width: 30px;
+    height: 30px;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.95);
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+
+    font-size: 18px;
+    font-weight: 800;
+
+    pointer-events: none;
+
+    animation: indicarRolagem 1.4s ease-in-out infinite;
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+  }
+
+
+  /* Seta escondida */
+  .indicador-rolagem.oculto {
+    opacity: 0;
+    transform: translateY(-50%) translateX(8px);
+  }
+
+
+  /* Pequena animação da seta */
+  @keyframes indicarRolagem {
+    0%,
+    100% {
+      transform: translateY(-50%) translateX(0);
+    }
+
+    50% {
+      transform: translateY(-50%) translateX(5px);
+    }
+  }
+}
+
+
+/* Fora do celular não mostra a indicação */
+@media (min-width: 601px) {
+  .indicador-rolagem {
+    display: none;
+  }
+}
+
+/* =========================================================
+   CARTÕES DOS PRATOS NO CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .grade-pratos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cartao-prato {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    column-gap: 14px;
+    align-items: start;
+    padding: 12px;
+  }
+
+  .imagem-prato {
+    grid-column: 1;
+    grid-row: 1 / span 4;
+
+    width: 110px;
+    height: 95px;
+
+    margin: 0;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .cartao-topo {
+    grid-column: 2;
+    margin-bottom: 5px;
+    gap: 6px;
+  }
+
+  .cartao-prato h4 {
+    font-size: 16px;
+    line-height: 1.2;
+  }
+
+  .selo-destaque {
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+
+  .cartao-prato .desc-prato {
+    grid-column: 2;
+    font-size: 12.5px;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .etiquetas {
+    grid-column: 2;
+    margin-bottom: 8px;
+  }
+
+  .cartao-rodape {
+    grid-column: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  .preco {
+    font-size: 20px;
+    white-space: nowrap;
+  }
+
+  .btn-adicionar {
+    flex-shrink: 0;
+    white-space: nowrap;
+
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .btn-adicionar svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* =========================================================
+   AJUSTE PARA CELULARES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .cartao-prato {
+    grid-template-columns: 90px 1fr;
+    column-gap: 10px;
+    padding: 10px;
+  }
+
+  .imagem-prato {
+    width: 90px;
+    height: 82px;
+  }
+
+  .cartao-prato h4 {
+    font-size: 15px;
+  }
+
+  .cartao-prato .desc-prato {
+    font-size: 12px;
+  }
+
+  .preco {
+    font-size: 18px;
+  }
+
+  .btn-adicionar {
+    padding: 7px 9px;
+    font-size: 11px;
+  }
+}
+
+
+/* =========================================================
+   CELULARES MUITO PEQUENOS
+   ========================================================= */
+
+@media (max-width: 340px) {
+
+  .cartao-prato {
+    grid-template-columns: 78px 1fr;
+    column-gap: 8px;
+    padding: 9px;
+  }
+
+  .imagem-prato {
+    width: 78px;
+    height: 72px;
+  }
+
+  .cartao-prato h4 {
+    font-size: 14px;
+  }
+
+  .cartao-prato .desc-prato {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .etiqueta {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+
+  .preco {
+    font-size: 17px;
+  }
+
+  .btn-adicionar {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+}

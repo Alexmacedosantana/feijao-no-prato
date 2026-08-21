@@ -1,0 +1,2687 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feijão no Prato | Comida caseira todos os dias</title>
+    <meta
+      name="description"
+      content="Feijão no Prato - restaurante de comida caseira. Pratos executivos, marmitas, bebidas e sobremesas. Peça pelo WhatsApp."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/responsivel.css" />
+  </head>
+  <body>
+    <div class="conteudo-site">
+      <!-- ================= AVISO DE FUNCIONAMENTO ================= -->
+      <div class="aviso-funcionamento">
+        <div class="container">
+          <span class="status-ponto" id="pontoStatus"></span>
+          <span id="textoStatus">Verificando horário…</span>
+        </div>
+      </div>
+
+      <!-- ================= CABEÇALHO ================= -->
+      <header class="principal">
+        <div class="container barra-topo">
+          <div class="marca">
+            <div class="marca-selo" aria-hidden="true">🍲</div>
+            <div class="marca-texto">
+              <h1>Feijão no Prato</h1>
+              <p>Comida caseira, todo dia</p>
+            </div>
+          </div>
+          <button
+            class="botao-carrinho"
+            id="btnAbrirCarrinho"
+            aria-label="Abrir carrinho"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="9" cy="21" r="1" />
+              <circle cx="20" cy="21" r="1" />
+              <path
+                d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+              />
+            </svg>
+            <span class="rotulo">Carrinho</span>
+            <span class="contador-carrinho" id="contadorCarrinho">0</span>
+          </button>
+        </div>
+        <div class="container barra-busca">
+          <div class="campo-busca">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+            <input
+              type="text"
+              id="campoBusca"
+              placeholder="Buscar prato, marmita, bebida…"
+              aria-label="Buscar no cardápio"
+            />
+          </div>
+        </div>
+      </header>
+
+      <!-- ================= MENU PRINCIPAL ================= -->
+      <nav class="menu-principal" aria-label="Menu principal">
+        <div class="container">
+          <ul id="navMenu" class="menu nav-links nav-menu">
+            <li>
+              <a href="#cardapio" data-categoria-menu="todos">Cardápio</a>
+            </li>
+            <li>
+              <a href="#cardapio" data-categoria-menu="executivos"
+                >Pratos Executivos</a
+              >
+            </li>
+            <li>
+              <a href="#cardapio" data-categoria-menu="marmitas">Marmitas</a>
+            </li>
+            <li>
+              <a href="#cardapio" data-categoria-menu="bebidas">Bebidas</a>
+            </li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- ================= HERO / PRATO DO DIA ================= -->
+      <section class="hero">
+        <div class="container hero-grade">
+          <div>
+            <p class="hero-eyebrow">Cardápio digital</p>
+            <h2>Sabor de casa,<br />direto no seu prato.</h2>
+            <p class="descricao">
+              Pratos executivos, marmitas prontas, bebidas geladas e sobremesas
+              caseiras. Monte seu pedido e finalize em segundos pelo WhatsApp.
+            </p>
+            <div class="hero-ctas">
+              <a href="#cardapio" class="btn btn-primario"
+                >Ver cardápio de hoje</a
+              >
+              <a href="#contato" class="btn btn-secundario"
+                >Endereço e horários</a
+              >
+            </div>
+          </div>
+          <div class="carimbo-prato-dia" id="cartaoPratoDoDia">
+            <!-- preenchido via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SELETOR DE DIAS DOS EXECUTIVOS ================= -->
+      <nav
+        class="nav-cardapio"
+        id="cardapio"
+        aria-label="Selecionar dia dos pratos executivos"
+      >
+        <div class="container">
+          <div
+            class="seletor-dias"
+            id="seletorDias"
+            role="tablist"
+            aria-label="Selecionar dia da semana"
+          ></div>
+        </div>
+      </nav>
+
+      <!-- ================= CARDÁPIO ================= -->
+
+      <main>
+        <div class="container">
+          <h2 class="secao-titulo" id="tituloSecao">
+            Cardápio <span class="contagem" id="contagemItens"></span>
+          </h2>
+          <div class="grade-pratos" id="gradePratos">
+            <!-- ================= EXECUTIVOS ================= -->
+                      
+                      <!--sabado  -->
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="6"
+              data-busca="tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Tiras-de-filé-de-Frango-frioto-empanado.webp"
+                alt="Filé de frango empanado"
+              />
+              <div class="cartao-topo">
+                <h4> Tiras Filé de frango frito empanado</h4>
+              </div>
+              <p class="desc-prato">
+                Tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Tiras Filé de frango empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sab-Filé de frango empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+
+             <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="6"
+              data-busca="carne na chapa arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Carne na chapa.webp"
+                alt="carne na chapa"
+              />
+              <div class="cartao-topo">
+                <h4> carne na chapa</h4>
+              </div>
+              <p class="desc-prato">
+               carne na chapa arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">carne na chapa</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sab-carne na chapa"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+
+             <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="6"
+              data-busca="tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Filé de frango empanado"
+              />
+              <div class="cartao-topo">
+                <h4> Tiras Filé de frango frito empanado</h4>
+              </div>
+              <p class="desc-prato">
+                Tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Tiras Filé de frango empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sab-Filé de frango empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+             <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="6"
+              data-busca="tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Filé de frango empanado"
+              />
+              <div class="cartao-topo">
+                <h4> Tiras Filé de frango frito empanado</h4>
+              </div>
+              <p class="desc-prato">
+                Tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Tiras Filé de frango empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sab-Filé de frango empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+             <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="6"
+              data-busca="tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Filé de frango empanado"
+              />
+              <div class="cartao-topo">
+                <h4> Tiras Filé de frango frito empanado</h4>
+              </div>
+              <p class="desc-prato">
+                Tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Tiras Filé de frango empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sab-Filé de frango empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+             <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="6"
+              data-busca="tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Filé de frango empanado"
+              />
+              <div class="cartao-topo">
+                <h4> Tiras Filé de frango frito empanado</h4>
+              </div>
+              <p class="desc-prato">
+                Tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Tiras Filé de frango empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sab-Filé de frango empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+             <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="6"
+              data-busca="tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Filé de frango empanado"
+              />
+              <div class="cartao-topo">
+                <h4> Tiras Filé de frango frito empanado</h4>
+              </div>
+              <p class="desc-prato">
+                Tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Tiras Filé de frango empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sab-Filé de frango empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+             <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="6"
+              data-busca="tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Filé de frango empanado"
+              />
+              <div class="cartao-topo">
+                <h4> Tiras Filé de frango frito empanado</h4>
+              </div>
+              <p class="desc-prato">
+                Tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Tiras Filé de frango empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sab-Filé de frango empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+             <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="6"
+              data-busca="tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Filé de frango empanado"
+              />
+              <div class="cartao-topo">
+                <h4> Tiras Filé de frango frito empanado</h4>
+              </div>
+              <p class="desc-prato">
+                Tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Tiras Filé de frango empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sab-Filé de frango empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+             <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="6"
+              data-busca="tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Filé de frango empanado"
+              />
+              <div class="cartao-topo">
+                <h4> Tiras Filé de frango frito empanado</h4>
+              </div>
+              <p class="desc-prato">
+                Tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Tiras Filé de frango empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sab-Filé de frango empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+             <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="6"
+              data-busca="tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Filé de frango empanado"
+              />
+              <div class="cartao-topo">
+                <h4> Tiras Filé de frango frito empanado</h4>
+              </div>
+              <p class="desc-prato">
+                Tiras de file de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Tiras Filé de frango empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sab-Filé de frango empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <!--sexta-feira-->
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="5"
+              data-busca="Frango ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Frango ao Molho"
+              />
+              <div class="cartao-topo">
+                <h4>Frango ao molho</h4>
+              </div>
+              <p class="desc-prato">
+                Frango ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> frango ao molho</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sex-Frango Ao molho"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="5"
+              data-busca="Tiras de Filé de frango empanado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Tiras-de-filé-de-Frango-frioto-empanado.webp"
+                alt="Tiras de filé de frango empanado"
+              />
+              <div class="cartao-topo">
+                <h4>Tiras de filé de frango empanado</h4>
+              </div>
+              <p class="desc-prato">
+                Tiras de filé de frango empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> Tiras de filé de frango empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sex-Tiras de filé de frango empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="5"
+              data-busca="carne chapa Acebolada arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/carne-na-chapa-acebolado.webp"
+                alt="carne chapa Acebolada"
+              />
+              <div class="cartao-topo">
+                <h4>carne chapa Acebolada</h4>
+              </div>
+              <p class="desc-prato">
+                carne chapa Acebolada arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> carne chapa Acebolada</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sex-carne chapa Acebolada"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="5"
+              data-busca="Galinha picante arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/galinha picante.webp"
+                alt="Galinha picante"
+              />
+              <div class="cartao-topo">
+                <h4>Galinha picante</h4>
+              </div>
+              <p class="desc-prato">
+                Galinha picante arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> Galinha picante</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sex-Galinha picante"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="5"
+              data-busca="assado de panela arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Assado-de-Panela.webp"
+                alt="assado de panela"
+              />
+              <div class="cartao-topo">
+                <h4>assado de panela</h4>
+              </div>
+              <p class="desc-prato">
+                assado de panela arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> assado de panela</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sex-Assado de panela"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="5"
+              data-busca="carne toscana arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/carne-com-toscana.webp"
+                alt="carne toscana"
+              />
+              <div class="cartao-topo">
+                <h4>carne toscana</h4>
+              </div>
+              <p class="desc-prato">
+                Carne toscana arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> carne toscana</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sex-Carne Toscana"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="5"
+              data-busca="figado acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Figado-acebolado.webp"
+                alt="Frango ao Molho"
+              />
+              <div class="cartao-topo">
+                <h4>figado acebolado</h4>
+              </div>
+              <p class="desc-prato">
+                figado acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> figado acebolado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sex-figado acebolado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="5"
+              data-busca="costela guisada arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Costela-quisada.webp"
+                alt="Costela Guisada"
+              />
+              <div class="cartao-topo">
+                <h4>Costela Guisada</h4>
+              </div>
+              <p class="desc-prato">
+                costela guisada arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> costela guisada</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sex-costela guisada"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="5"
+              data-busca="panelada da casa arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/panelada-da-casa.webp"
+                alt="panelada da casa"
+              />
+              <div class="cartao-topo">
+                <h4>panelada da casa</h4>
+              </div>
+              <p class="desc-prato">
+                panelada da casa arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> panelada da casa</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sex-panelada da casa"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="5"
+              data-busca=" Frango passarinho crocante arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-passarinho-crocante.webp"
+                alt=" Frango passarinho crocante"
+              />
+              <div class="cartao-topo">
+                <h4> Frango passarinho crocante</h4>
+              </div>
+              <p class="desc-prato">
+               Frango passarinho crocante arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Frango passarinho crocante</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-sex- Frango passarinho crocante"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="5"
+              data-busca="Bife acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Bife-acebolado.webp"
+                alt="Bife acebolado"
+              />
+              <div class="cartao-topo">
+                <h4>Bife acebolado </h4>
+              </div>
+              <p class="desc-prato">
+                Bife acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> Bife acebolado </span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-ter-Bife acebolado "
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+                <!--- ----------------quimta -Feira--------------->
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="4"
+              data-busca=" bife acebolado  arroz, baião, macarrão, salada, farofa, feijão e banana
+                 frita. "
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Bife-acebolado.webp"
+                alt="bife acebolado"
+              />
+              <div class="cartao-topo">
+                <h4>bife acebolado</h4>
+              </div>
+              <p class="desc-prato">
+                bife acebolado acebolado arroz, baião, macarrão, salada, farofa, feijão e banana
+                 frita.
+                
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> bife acebolado </span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-quin-bife acebolado">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="4"
+              data-busca="Costelinha de tambaqui,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="25.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/costelinha-de-tambaqui.webp"
+                alt="Costelinha de tambaqui"
+              />
+              <div class="cartao-topo">
+                <h4>Costelinha de tambaqui</h4>
+              </div>
+              <p class="desc-prato">
+                Costelinha de tambaqui, arroz, baião, macarrão, salada, farofa, feijão e banana
+                 frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Costelinha de tambaqui</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 25,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quin-Costelinha de tambaqui"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="4"
+              data-busca="Calabresa acebolada arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Calabresa-acebolada.webp"
+                alt="Calabresa acebolada"
+              />
+              <div class="cartao-topo">
+                <h4>Calabresa acebolada</h4>
+              </div>
+              <p class="desc-prato">
+                Calabresa aceboladaarroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Calabresa aceboladao</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quin-Calabresa acebolada"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="4"
+              data-busca="Frango ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Frango ao Molho"
+              />
+              <div class="cartao-topo">
+                <h4>Frango ao molho</h4>
+              </div>
+              <p class="desc-prato">
+                Frango ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> frango ao molho</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quin-Frango Ao molho"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="4"
+              data-busca="Almôndegas ao Molho arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Almôndega-ao-molho.webp"
+                alt="Almôndegas ao Molho"
+              />
+              <div class="cartao-topo">
+                <h4>Almôndegas ao Molho</h4>
+              </div>
+              <p class="desc-prato">
+               Almôndegas ao Molho arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> Almôndegas ao Molho</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quin-Almôndegas ao Molho"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="4"
+              data-busca="Galinha picante arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/galinha picante.webp"
+                alt="Galinha picante"
+              />
+              <div class="cartao-topo">
+                <h4>Galinha picante</h4>
+              </div>
+              <p class="desc-prato">
+                Galinha picante arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> Galinha picante</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quin-Galinha picante"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="4"
+              data-busca="Figado acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Figado-acebolado.webp"
+                alt="Figado acebolado"
+              />
+              <div class="cartao-topo">
+                <h4>Figado acebolado</h4>
+              </div>
+              <p class="desc-prato">
+               Figado acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> Figado acebolado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quin-Figado acebolado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="4"
+              data-busca="carne com toscana arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/carne-com-toscana.webp"
+                alt="carne com toscana"
+              />
+              <div class="cartao-topo">
+                <h4>carne com toscana</h4>
+              </div>
+              <p class="desc-prato">
+                carne com toscanao arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> carne com toscana</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quin-carne com toscana"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="4"
+              data-busca="assado de panelaarroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Assado-de-Panela.webp"
+                alt="Assado de Panela"
+              />
+              <div class="cartao-topo">
+                <h4>assado de panela</h4>
+              </div>
+              <p class="desc-prato">
+                assado de panela arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> assado de panela</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quin-assado de panela"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="4"
+              data-busca="carne na chapa acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/carne-na-chapa-acebolado.webp"
+                alt="carne na chapa acebolado"
+              />
+              <div class="cartao-topo">
+                <h4>carne na chapa acebolado</h4>
+              </div>
+              <p class="desc-prato">
+               carne na chapa acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> carne na chapa acebolado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quin-carne na chapa acebolado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="4"
+              data-busca="tiras de filé de frango empanado frito arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Tiras-de-filé-de-Frango-frioto-empanado.webp"
+                alt="tiras de filé de frango empanado frito"
+              />
+              <div class="cartao-topo">
+                <h4>Tiras de filé de frango empanado frito</h4>
+              </div>
+              <p class="desc-prato">
+                tiras de filé de frango empanado frito arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">tiras de filé de frango empanado frito</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quin-Tiras de filé de frango empanado frito"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+     <!------------------------Quarta-Feira------------------------------------------->
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="3"
+              data-busca="galinha picante arroz Branco ou Baião,salada,farofa,Feijão, 
+              Macarrão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/galinha picante.webp"
+                alt="Galinha Picante"
+              />
+              <div class="cartao-topo">
+                <h4>Galhinha Picante</h4>
+              </div>
+              <p class="desc-prato">
+                 arroz branco e ou Baião, 
+                salada Feijão, macarão, Farofa,Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Galinha picante</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-qua">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="3"
+              data-busca="Bife Acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Bife-acebolado.webp"
+                alt="Bife Acebolado"
+              />
+              <div class="cartao-topo">
+                <h4>Bife Acebolado</h4>
+              </div>
+              <p class="desc-prato">
+                Bife Acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> Bife Acebolado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quar-Bife acebolado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="3"
+              data-busca="costela quisada arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Costela-quisada.webp"
+                alt="Costela Quisada"
+              />
+              <div class="cartao-topo">
+                <h4>costela quisada</h4>
+              </div>
+              <p class="desc-prato">
+                Costela quisada arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> costela quisada</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quar-costela quisada"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="3"
+              data-busca="Estrogonofe de carne arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/strogonoff-de-carne.webp"
+                alt="estrogonofe de carne"
+              />
+              <div class="cartao-topo">
+                <h4>Estrogonofe de Carne</h4>
+              </div>
+              <p class="desc-prato">
+                Estrogonofe de carne arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> estrogonofe de carne</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-qua-estrogonofe de carne"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="3"
+              data-busca="Frango ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Frango ao Molho"
+              />
+              <div class="cartao-topo">
+                <h4>Frango ao molho</h4>
+              </div>
+              <p class="desc-prato">
+                Frango ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> frango ao molho</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-ter-Frango Ao molho"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="3"
+              data-busca="Almôndegas ao arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Almôndega-ao-molho.webp"
+                alt="almôndegas ao Molho"
+              />
+              <div class="cartao-topo">
+                <h4>Almôndegas ao molho</h4>
+              </div>
+              <p class="desc-prato">
+               almôndegas ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> almôndegas ao molho</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quar-Almôndegas Ao molho"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="3"
+              data-busca="tiras de filé de frango frito empanado arroz,Baião,
+               macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Tiras-de-filé-de-Frango-frioto-empanado.webp"
+                alt="tiras de filé de frango frito empanado"
+              />
+              <div class="cartao-topo">
+                <h4>tiras de filé de frango frito empanado</h4>
+              </div>
+              <p class="desc-prato">
+                tiras de filé de frango frito empanado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> tiras de filé de frango frito empanado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quar-tiras de filé de frango frito empanado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="3"
+              data-busca="carne na chapa acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/carne-na-chapa-acebolado.webp"
+                alt="carne na chapa acebolado"
+              />
+              <div class="cartao-topo">
+                <h4>carne na chapa acebolado</h4>
+              </div>
+              <p class="desc-prato">
+                carne na chapa acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> carne na chapa acebolado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quar-carne na chapa acebolado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="3"
+              data-busca="carne fritas arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="23.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/carnes-fritas.webp"
+                alt="carnes fritas"
+              />
+              <div class="cartao-topo">
+                <h4>carne fritas</h4>
+              </div>
+              <p class="desc-prato">
+                carne fritas arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> carnes fritas</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 23,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quar-carnes fritas"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="3"
+              data-busca="assasado de panela arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Assado-de-panela.webp"
+                alt="assado de panela"
+              />
+              <div class="cartao-topo">
+                <h4>Assado de Panela</h4>
+              </div>
+              <p class="desc-prato">
+                Assado de Panela arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> Assado de Panela</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-quar-Assado de Panela"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="3"
+              data-busca="Frango ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Macarrão-aparmegiana.webp"
+                alt="macarrão aparmegiana"
+              />
+              <div class="cartao-topo">
+                <h4>macarrão aparmegiana</h4>
+              </div>
+              <p class="desc-prato">
+                Macarrão aparmegiana ,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Macarrão aparmegiana</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 25,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-ter-Macarrão aparmegiana"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <!--Terça -Feira-->
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="2"
+              data-busca="Frango ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Frango ao Molho"
+              />
+              <div class="cartao-topo">
+                <h4>Frango ao molho</h4>
+              </div>
+              <p class="desc-prato">
+                Frango ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> frango ao molho</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-ter-Frango Ao molho"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="2"
+              data-busca="assado de panela arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Assado-de-Panela.webp"
+                alt="Carne de Panela"
+              />
+              <div class="cartao-topo">
+                <h4>Assado de Panela</h4>
+              </div>
+              <p class="desc-prato">
+                assado de panela arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">assado de panela</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-qua-Assado de panela"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="2"
+              data-busca="bife acebolado arroz ou Baião feijao farofa macarrão salada banana Frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Bife-acebolado.webp"
+                alt="Bife Acebolado"
+              />
+              <div class="cartao-topo">
+                <h4>Bife Acebolado</h4>
+              </div>
+              <p class="desc-prato">
+                Bife acebolado arroz ou Baião feijão, farofa Macarrão salada
+                banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Bife Acebolado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-ter">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="2"
+              data-busca="cozidão de legumes"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/cozidão.webp"
+                alt="cozidão de legumes"
+              />
+              <div class="cartao-topo">
+                <h4>cozidão de legumes</h4>
+              </div>
+              <p class="desc-prato">
+                Cozidão de legumes arroz branco ou Baião, Farofa, feijão, macarrão,
+                salada, Banana Frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">cozidão de legumes</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-ter">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="2"
+              data-busca="costela guisada arroz branco ou Baião, farofa, feijão,Macarrão,Banana frita
+                salada. "
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Costela-quisada.webp"
+                alt="costela guisada"
+              />
+              <div class="cartao-topo">
+                <h4>costela guisada</h4>
+              </div>
+              <p class="desc-prato">
+               costela guisada arroz branco ou Baião, farofa, feijão,Macarrão,Banana frita
+                salada.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">costela guisada</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-ter costela guisada">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="2"
+              data-busca="Almôndega ao Molho"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Almôndega-ao-molho.webp"
+                alt="Almôndega ao Molho"
+              />
+              <div class="cartao-topo">
+                <h4>Almôndega ao Molho</h4>
+              </div>
+              <p class="desc-prato">
+               Almôndega ao Molho, arroz branco ou Baião, macarrão farofa,Feijão e Banana Frita
+                salada.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Almôndega ao Molho</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-ter">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="2"
+              data-busca="carne Chapa arroz branco ou Baião, Farofa, Macarrão feijão e Banana Frita
+                salada"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Carne-na-chapa.webp"
+                alt="carne Chapa"
+              />
+              <div class="cartao-topo">
+                <h4>carne Chapa</h4>
+              </div>
+              <p class="desc-prato">
+                carne Chapa arroz branco ou Baião, Farofa, macarrão feijão e Banana Frita
+                salada.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Carne Chapa</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-ter">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="2"
+              data-busca="Galinha picante arroz branco ou Baião,Farofa, Macarrão Feijão E Banana frita salada."
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/galinha picante.webp"
+                alt="Galinha picante"
+              />
+              <div class="cartao-topo">
+                <h4>Galinha picante</h4>
+              </div>
+              <p class="desc-prato">
+                Galinha picante arroz branco ou Baião,Farofa,  Macarrão Feijão E Banana frita
+                salada.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Galinha picante</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-ter">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="2"
+              data-busca="carne com Toscana Arroz ou Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/carne-com-toscana.webp"
+                alt="carne com Toscana"
+              />
+              <div class="cartao-topo">
+                <h4>carne com Toscana</h4>
+              </div>
+              <p class="desc-prato">
+               carne com Toscana Arroz ou Baião Macarrão, salada ,farofa,Feijão E Banana frita
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">carne com Toscana</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-ter">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="2"
+              data-busca="Figado acebolado, arroz branco ou Baião Macarrão,Salada,Farofa, feijão e Banana frita
+                salada."
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/figado-acebolado.webp"
+                alt="Figado acebolado"
+              />
+              <div class="cartao-topo">
+                <h4>Figado acebolado</h4>
+              </div>
+              <p class="desc-prato">
+                Figado acebolado, arroz branco ou Baião Macarrão,Salada,Farofa, feijão e Banana frita
+                salada.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">Figado acebolado, arroz branco ou Baião Macarrão,Salada,Farofa, feijão e Banana frita
+                salada.</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-Ter">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="2"
+              data-busca=" tiras de filé de frango frito arroz,Baião, macarrão,Salada,farofa,Feijão E Banana frita"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Tiras-de-filé-de-Frango-frioto-empanado.webp"
+                alt="tiras de filé de frango frito"
+              />
+              <div class="cartao-topo">
+                <h4> tiras de filé de frango frito</h4>
+              </div>
+              <p class="desc-prato">
+                tiras de filé de frango frito, arroz branco ou Baião Macarrão
+                salada Farofa,Feijão E Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> frango/tiras de filé de frango frito</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-ter- tiras de file defrango frito">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <!--Segunda -Feira-->
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="1"
+              data-busca=" assado panela arroz,Baião, macarrão,Salada,farofa,Feijão E Banana"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Assado-de-Panela.webp"
+                alt="assado panela"
+              />
+              <div class="cartao-topo">
+                <h4>assado panela</h4>
+              </div>
+              <p class="desc-prato">
+                assado panela arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> especial de segunda-feira</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-seg-assado de panela"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <art1cle
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="1"
+              data-busca=" Galinha picante arroz,Baião, macarrão,Salada,farofa,Feijão E Banana"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/galinha picante.webp"
+                alt="Galinha picante"
+              />
+              <div class="cartao-topo">
+                <h4>Galinha picante</h4>
+              </div>
+              <p class="desc-prato">
+                Galinha picante arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">🍗 especial de Segunda -feira</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-seg-galinha picante"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </art1cle>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="1"
+              data-busca="Carne na chapa arroz,Baião, macarrão,Salada,farofa,Feijão E Banana"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Carne-na-chapa.webp"
+                alt="Carne na chapa"
+              />
+              <div class="cartao-topo">
+                <h4>carne na chapa</h4>
+              </div>
+              <p class="desc-prato">
+                Carne na chapa arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta"> especia de segunda-feira</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button class="btn-adicionar" data-id="exec-seg-chapa">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="1"
+              data-busca="Frango ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E Banana"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Frango-ao-molho.webp"
+                alt="Frango ao Molho"
+              />
+              <div class="cartao-topo">
+                <h4>Frango ao Molho</h4>
+              </div>
+              <p class="desc-prato">
+                Frango ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">especial de segunda-Feira</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-seg-frango ao molho"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="1"
+              data-busca="Carne Toscana arroz ou,Baião, macarrão,Salada,farofa,Feijão E Banana"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/carne-com-toscana.webp"
+                alt="Carne e toscana"
+              />
+              <div class="cartao-topo">
+                <h4>carne com Toscana</h4>
+              </div>
+              <p class="desc-prato">
+                Carne toscana arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">especial de segunda-feira</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-seg-carne com toscana"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="1"
+              data-busca="Figado acebolado arroz ou,Baião, macarrão,Salada,farofa,Feijão E Banana"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/figado-acebolado.webp"
+                alt="Figado acebolado"
+              />
+              <div class="cartao-topo">
+                <h4>Figado acebolado</h4>
+              </div>
+              <p class="desc-prato">
+                figado acebolado arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">especial de segunda-feira</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-seg figado acebolado"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="1"
+              data-busca="carnes Fritas arroz ou,Baião, macarrão,Salada,farofa,Feijão E Banana"
+              data-preco="25.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/carnes-fritas.webp"
+                alt="carnes Fritas"
+              />
+              <div class="cartao-topo">
+                <h4>carnes Fritas</h4>
+              </div>
+              <p class="desc-prato">
+                carnes Fritas arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">especial de segunda-feira</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 25,00</span>
+                <button class="btn-adicionar" data-id="exec-seg carnese Fritas">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="1"
+              data-busca="costela guisada arroz ou,Baião, macarrão,Salada,farofa,Feijão E Banana"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Costela-quisada.webp"
+                alt="costela guisada"
+              />
+              <div class="cartao-topo">
+                <h4>costela guisada</h4>
+              </div>
+              <p class="desc-prato">
+                costela Guisada arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">especial de segunda-feira</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-seg costela guisada"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="1"
+              data-busca="File de frango frito arroz ou,Baião, macarrão,Salada,farofa,Feijão E Banana"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/file-de-frango-frito.webp"
+                alt="file frango frito"
+              />
+              <div class="cartao-topo">
+                <h4>file de grango frito</h4>
+              </div>
+              <p class="desc-prato">
+                File de frango frito arroz,Baião, macarrão,Salada,farofa,Feijão
+                E Banana.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">especial de segunda-feira</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-seg file de frango frito"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="1"
+              data-busca="amondegas ao Molho arroz ou,Baião, macarrão,Salada,farofa,Feijão E Banana"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/Almôndega-ao-molho.webp"
+                alt="Amondegas ao Molho"
+              />
+              <div class="cartao-topo">
+                <h4>Amondegas ao Molho</h4>
+              </div>
+              <p class="desc-prato">
+                Amondegas ao molho arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">especial de segunda-feira</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-seg Amondegas ao Molho"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="executivos"
+              data-dia="1"
+              data-busca="cozidão de legumes arroz ou,Baião, macarrão,Salada,farofa,Feijão E Banana"
+              data-preco="20.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/cozidão.webp"
+                alt="cozidão de legumes"
+              />
+              <div class="cartao-topo">
+                <h4>cozidão de legumes</h4>
+              </div>
+              <p class="desc-prato">
+                cozidão de legumes arroz,Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">especial de segunda-feira</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,00</span>
+                <button
+                  class="btn-adicionar"
+                  data-id="exec-seg cozidão de legumes"
+                >
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <!-- ================= MARMITAS ================= -->
+            <article
+              class="cartao-prato"
+              data-categoria="marmitas"
+              data-busca="marmita p individual arroz feijao carne acompanhamento"
+              data-preco="18.90"
+            >
+              
+              <div class="cartao-topo">
+                <h4>Marmita P</h4>
+              </div>
+              <p class="desc-prato">
+                Arroz, feijão, uma carne à escolha e um acompanhamento. Ideal
+                para uma refeição leve.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">📦 individual</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 18,90</span>
+                <button class="btn-adicionar" data-id="marmita-p">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="marmitas"
+              data-busca="marmita m mais pedida arroz feijao duas carnes dois acompanhamentos"
+              data-preco="22.90"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/placeholder-cardapio.svg"
+                alt="Marmita M"
+              />
+              <div class="cartao-topo">
+                <h4>Marmita M</h4>
+              </div>
+              <p class="desc-prato">
+                Arroz, feijão, duas carnes e dois acompanhamentos. A mais pedida
+                da casa.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">📦 mais pedida</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 22,90</span>
+                <button class="btn-adicionar" data-id="marmita-m">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="marmitas"
+              data-busca="marmita g reforcada arroz feijao tres carnes tres acompanhamentos"
+              data-preco="26.90"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/placeholder-cardapio.svg"
+                alt="Marmita G"
+              />
+              <div class="cartao-topo">
+                <h4>Marmita G</h4>
+              </div>
+              <p class="desc-prato">
+                Arroz, feijão, três carnes e três acompanhamentos. Para quem
+                está com fome de verdade.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">📦 reforçada</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 26,90</span>
+                <button class="btn-adicionar" data-id="marmita-g">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="marmitas"
+              data-busca="marmita vegetariana arroz feijao legumes grelhados proteina soja salada"
+              data-preco="20.90"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/placeholder-cardapio.svg"
+                alt="Marmita Vegetariana"
+              />
+              <div class="cartao-topo">
+                <h4>Marmita Vegetariana</h4>
+              </div>
+              <p class="desc-prato">
+                Arroz, feijão, legumes grelhados, proteína de soja e salada
+                colorida.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">🥬 vegetariana</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 20,90</span>
+                <button class="btn-adicionar" data-id="marmita-veg">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+            <!-- ================= BEBIDAS ================= -->
+            <article
+              class="cartao-prato"
+              data-categoria="bebidas"
+              data-busca="suco laranja natural espremido 500ml"
+              data-preco="9.90"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/placeholder-cardapio.svg"
+                alt="Suco de Laranja Natural"
+              />
+              <div class="cartao-topo">
+                <h4>Suco de Laranja Natural</h4>
+              </div>
+              <p class="desc-prato">
+                Suco de laranja espremido na hora, 500ml.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">🍊 natural</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 9,90</span>
+                <button class="btn-adicionar" data-id="bebida-suco-laranja">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="bebidas"
+              data-busca="suco limao natural adoçado medida 500ml"
+              data-preco="8.90"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/placeholder-cardapio.svg"
+                alt="Suco de Limão Natural"
+              />
+              <div class="cartao-topo">
+                <h4>Suco de Limão Natural</h4>
+              </div>
+              <p class="desc-prato">
+                Suco de limão fresquinho, adoçado na medida certa, 500ml.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">🍋 natural</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 8,90</span>
+                <button class="btn-adicionar" data-id="bebida-suco-limao">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="bebidas"
+              data-busca="refrigerante lata coca cola guarana fanta 350ml"
+              data-preco="6.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/placeholder-cardapio.svg"
+                alt="Refrigerante Lata"
+              />
+              <div class="cartao-topo">
+                <h4>Refrigerante Lata</h4>
+              </div>
+              <p class="desc-prato">
+                Coca-Cola, Guaraná ou Fanta, 350ml, bem gelado.
+              </p>
+              <div class="etiquetas">
+                <span class="etiqueta">🥤 gelado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 6,00</span>
+                <button class="btn-adicionar" data-id="bebida-refri">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="bebidas"
+              data-busca="guarana antartica lata 350ml"
+              data-preco="6.50"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/placeholder-cardapio.svg"
+                alt="Guaraná Antarctica"
+              />
+              <div class="cartao-topo">
+                <h4>Guaraná Antarctica</h4>
+              </div>
+              <p class="desc-prato">Lata 350ml.</p>
+              <div class="etiquetas">
+                <span class="etiqueta">🥤 gelado</span>
+              </div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 6,50</span>
+                <button class="btn-adicionar" data-id="bebida-guarana">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+
+            <article
+              class="cartao-prato"
+              data-categoria="bebidas"
+              data-busca="agua mineral garrafa 500ml com sem gas"
+              data-preco="4.00"
+            >
+              <img
+                class="imagem-prato"
+                src="assets/img/placeholder-cardapio.svg"
+                alt="Água Mineral"
+              />
+              <div class="cartao-topo">
+                <h4>Água Mineral</h4>
+              </div>
+              <p class="desc-prato">Garrafa 500ml, com ou sem gás.</p>
+              <div class="etiquetas"><span class="etiqueta">💧</span></div>
+              <div class="cartao-rodape">
+                <span class="preco">R$ 4,00</span>
+                <button class="btn-adicionar" data-id="bebida-agua">
+                  Adicionar
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </main>
+
+      <!-- ================= RODAPÉ ================= -->
+      <footer id="contato">
+        <div class="container">
+          <div class="grade-rodape">
+            <div>
+              <div class="marca-rodape">
+                <div
+                  class="marca-selo"
+                  style="width: 40px; height: 40px; font-size: 20px"
+                  aria-hidden="true"
+                >
+                  🍲
+                </div>
+                <span>Feijão no Prato</span>
+              </div>
+              <p>
+                Comida caseira feita com carinho, todos os dias. Prato
+                executivo, marmita ou sobremesa — sempre fresquinho.
+              </p>
+            </div>
+            <div>
+              <h5>Horário de funcionamento</h5>
+              <p>Segunda a sábado: 11h às 14h</p>
+            </div>
+            <div>
+              <h5>Contato</h5>
+              <p>📍 Rua coronel josé Galdino, 315 — Rio Branco, AC</p>
+              <p>📞 (68) 99999-9999</p>
+              <p>📷 @feijaonoprato</p>
+            </div>
+          </div>
+          <div class="linha-rodape">
+            © <span id="anoAtual"></span> Feijão no Prato. Todos os direitos
+            reservados.
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ================= ELEMENTOS FIXOS ================= -->
+    <a
+      class="whatsapp-flutuante"
+      id="whatsappFlutuante"
+      href="#"
+      target="_blank"
+      rel="noopener"
+      aria-label="Falar no WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.37c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.21-8.25 8.21zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.86.84-.86 2.04 0 1.2.88 2.36 1 2.52.12.17 1.74 2.66 4.22 3.73.59.25 1.05.4 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.28z"
+        />
+      </svg>
+    </a>
+
+    <!-- ================= FUNDO E PAINEL DO CARRINHO ================= -->
+    <div class="fundo-carrinho" id="fundoCarrinho"></div>
+    <aside
+      class="painel-carrinho"
+      id="painelCarrinho"
+      aria-label="Carrinho de compras"
+    >
+      <div class="cabecalho-carrinho">
+        <h3>Seu pedido</h3>
+        <button
+          class="fechar-carrinho"
+          id="btnFecharCarrinho"
+          aria-label="Fechar carrinho"
+        >
+          ✕
+        </button>
+      </div>
+      <div class="corpo-carrinho" id="corpoCarrinho"><!-- itens via JS --></div>
+      <div class="opcoes-pedido" id="opcoesPedido" style="display: none">
+        <div class="grupo-opcao">
+          <label>Forma de entrega</label>
+          <div class="alternador-tipo">
+            <button type="button" id="btnRetirada" class="ativo">
+              Retirar no local
+            </button>
+            <button type="button" id="btnEntrega">Entrega</button>
+          </div>
+        </div>
+        <div class="grupo-opcao" id="grupoEndereco" style="display: none">
+          <label for="campoEndereco">Endereço para entrega</label>
+          <input
+            type="text"
+            id="campoEndereco"
+            placeholder="Rua, número, bairro"
+          />
+        </div>
+        <div class="grupo-opcao">
+          <label for="campoNome">Seu nome</label>
+          <input
+            type="text"
+            id="campoNome"
+            placeholder="Como podemos te chamar?"
+          />
+        </div>
+      </div>
+      <div class="rodape-carrinho" id="rodapeCarrinho" style="display: none">
+        <div class="linha-total">
+          <span>Total do pedido</span>
+          <span class="valor-total" id="valorTotal">R$ 0,00</span>
+        </div>
+        <a
+          class="btn btn-finalizar"
+          id="btnFinalizarPedido"
+          target="_blank"
+          rel="noopener"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.13h-.01a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.37c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.21-8.25 8.21z"
+            />
+          </svg>
+          Finalizar pedido pelo WhatsApp
+        </a>
+      </div>
+    </aside>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1090 @@
+/* =========================================================
+   FEIJÃO NO PRATO — DESIGN TOKENS
+   Paleta inspirada em cozinha caseira brasileira:
+   feijão, telha de barro, milho, couve e arroz.
+   ========================================================= */
+/* Variáveis globais: cores, sombras, bordas e fontes usadas em todo o site. */
+:root {
+  --marrom-feijao: #4a2c1d;
+  --marrom-feijao-escuro: #341e13;
+  --vermelho-telha: #b33a2e;
+  --vermelho-telha-escuro: #8f2c22;
+  --amarelo-milho: #e0a73a;
+  --amarelo-milho-claro: #f0c875;
+  --verde-couve: #3b5941;
+  --verde-couve-claro: #4f7357;
+  --creme: #fbf3e3;
+  --creme-escuro: #f0e4cc;
+  --branco-arroz: #fffdf8;
+  --texto: #2b1d14;
+  --texto-suave: #6b5646;
+  --sombra: 0 10px 30px -12px rgba(43, 29, 20, 0.25);
+  --sombra-forte: 0 20px 45px -15px rgba(43, 29, 20, 0.35);
+  --raio: 16px;
+  --raio-peq: 10px;
+  --fonte-display: "Fraunces", Georgia, serif;
+  --fonte-corpo: "Inter", -apple-system, sans-serif;
+}
+
+/* Reset básico para padronizar tamanhos e espaçamentos entre navegadores. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--fonte-corpo);
+  background: var(--creme);
+  color: var(--texto);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+/* Reduz animações para pessoas que ativaram essa preferência no dispositivo. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Indica visualmente o elemento em foco durante a navegação por teclado. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--amarelo-milho);
+  outline-offset: 2px;
+}
+
+/* Limita a largura do conteúdo e mantém espaço nas laterais da tela. */
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Textura decorativa reutilizável, inspirada em toalhas de mesa. */
+.textura-xadrez {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.05) 0,
+      rgba(255, 255, 255, 0.05) 2px,
+      transparent 2px,
+      transparent 14px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(0, 0, 0, 0.08) 0,
+      rgba(0, 0, 0, 0.08) 2px,
+      transparent 2px,
+      transparent 14px
+    );
+}
+
+/* Faixa superior que informa se o restaurante está aberto ou fechado. */
+.aviso-funcionamento {
+  background: var(--marrom-feijao-escuro);
+  color: var(--creme);
+  font-size: 13px;
+  padding: 8px 0;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.aviso-funcionamento .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+/* Pequeno indicador circular de status: verde para aberto e vermelho para fechado. */
+.status-ponto {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.status-ponto.aberto {
+  background: #7cbb8e;
+  box-shadow: 0 0 0 3px rgba(124, 187, 142, 0.25);
+}
+.status-ponto.fechado {
+  background: #e0796b;
+  box-shadow: 0 0 0 3px rgba(224, 121, 107, 0.25);
+}
+
+/* Cabeçalho principal fixado no topo, com marca, carrinho e busca. */
+header.principal {
+  background: var(--marrom-feijao);
+  color: var(--creme);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  box-shadow: var(--sombra);
+}
+/* Organiza a marca e o botão do carrinho na mesma linha. */
+.barra-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  gap: 16px;
+}
+/* Conjunto visual do logotipo, nome e subtítulo do restaurante. */
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.marca-selo {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--amarelo-milho);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 3px var(--marrom-feijao-escuro);
+}
+.marca-texto h1 {
+  font-family: var(--fonte-display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.marca-texto p {
+  font-size: 12px;
+  color: var(--amarelo-milho-claro);
+  letter-spacing: 0.03em;
+  margin-top: 2px;
+}
+
+/* Botão que abre o painel lateral do carrinho de compras. */
+.botao-carrinho {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--vermelho-telha);
+  color: var(--branco-arroz);
+  padding: 10px 18px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 14px;
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease;
+  flex-shrink: 0;
+}
+.botao-carrinho:hover {
+  background: var(--vermelho-telha-escuro);
+  transform: translateY(-1px);
+}
+.botao-carrinho svg {
+  width: 20px;
+  height: 20px;
+}
+/* Círculo numérico que exibe a quantidade de itens no carrinho. */
+.contador-carrinho {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--amarelo-milho);
+  color: var(--marrom-feijao-escuro);
+  font-size: 11px;
+  font-weight: 800;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--marrom-feijao);
+  transition: transform 0.2s ease;
+}
+.contador-carrinho.pulsar {
+  animation: pulsarContador 0.4s ease;
+}
+@keyframes pulsarContador {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Área de busca do cardápio, localizada no fim do cabeçalho. */
+.barra-busca {
+  padding-bottom: 16px;
+}
+.campo-busca {
+  position: relative;
+  max-width: 520px;
+}
+.campo-busca input {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  border-radius: 100px;
+  border: none;
+  background: rgba(255, 253, 248, 0.12);
+  color: var(--creme);
+  font-size: 14px;
+}
+.campo-busca input::placeholder {
+  color: rgba(251, 243, 227, 0.55);
+}
+.campo-busca input:focus {
+  background: rgba(255, 253, 248, 0.2);
+  outline: 2px solid var(--amarelo-milho);
+}
+.campo-busca svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Barra principal de navegação exibida abaixo do cabeçalho. */
+.menu-principal {
+  background: var(--branco-arroz);
+  border-bottom: 1px solid var(--creme-escuro);
+  box-shadow: 0 3px 10px -9px rgba(43, 29, 20, 0.45);
+}
+/* Lista de links do menu: permanece em uma linha e pode rolar no celular. */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 52px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+/* Oculta a barra de rolagem visual em navegadores baseados no Chromium. */
+.nav-menu::-webkit-scrollbar {
+  display: none;
+}
+/* Aparência padrão de cada link do menu. */
+.nav-menu a {
+  display: block;
+  padding: 8px 13px;
+  border-radius: 100px;
+  color: var(--texto-suave);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    background 0.18s ease,
+    color 0.18s ease;
+}
+/* Destaque quando o link recebe o mouse ou foco pelo teclado. */
+.nav-menu a:hover,
+.nav-menu a:focus-visible {
+  background: var(--creme-escuro);
+  color: var(--marrom-feijao);
+}
+
+/* Destaque inicial da página com chamadas para o cardápio e contato. */
+.hero {
+  background: var(--marrom-feijao-escuro);
+  color: var(--creme);
+  padding: 48px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(224, 167, 58, 0.05) 0 2px,
+      transparent 2px 18px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(224, 167, 58, 0.05) 0 2px,
+      transparent 2px 18px
+    );
+  pointer-events: none;
+}
+/* Divide o hero entre o texto de apresentação e o prato do dia. */
+.hero-grade {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-eyebrow {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--amarelo-milho-claro);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.hero h2 {
+  font-family: var(--fonte-display);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 600;
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.hero p.descricao {
+  color: rgba(251, 243, 227, 0.8);
+  font-size: 16px;
+  max-width: 460px;
+  margin-bottom: 24px;
+}
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Estilo base compartilhado pelos botões de ação do site. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 14px;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+.btn-primario {
+  background: var(--amarelo-milho);
+  color: var(--marrom-feijao-escuro);
+}
+.btn-primario:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -6px rgba(224, 167, 58, 0.5);
+}
+.btn-secundario {
+  background: transparent;
+  color: var(--creme);
+  border: 1.5px solid rgba(251, 243, 227, 0.4);
+}
+.btn-secundario:hover {
+  background: rgba(251, 243, 227, 0.1);
+}
+
+/* Cartão em destaque preenchido pelo JavaScript com o prato do dia. */
+.carimbo-prato-dia {
+  position: relative;
+  background: var(--branco-arroz);
+  border-radius: var(--raio);
+  padding: 28px;
+  color: var(--texto);
+  box-shadow: var(--sombra-forte);
+  transform: rotate(-1.2deg);
+  animation: apareceCarimbo 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes apareceCarimbo {
+  from {
+    opacity: 0;
+    transform: rotate(-1.2deg) translateY(18px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-1.2deg) translateY(0) scale(1);
+  }
+}
+/* Selo circular decorativo sobre o cartão do prato do dia. */
+.selo-carimbo {
+  position: absolute;
+  top: -18px;
+  right: -10px;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: 3px solid var(--vermelho-telha);
+  outline: 1.5px solid var(--vermelho-telha);
+  outline-offset: 3px;
+  color: var(--vermelho-telha);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--fonte-display);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  transform: rotate(12deg);
+  background: rgba(179, 58, 46, 0.03);
+  line-height: 1.15;
+}
+.dia-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--vermelho-telha);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.carimbo-prato-dia h3 {
+  font-family: var(--fonte-display);
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  padding-right: 70px;
+}
+.carimbo-prato-dia .desc-prato {
+  color: var(--texto-suave);
+  font-size: 14.5px;
+  margin-bottom: 18px;
+}
+.linha-preco-add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.preco {
+  font-family: var(--fonte-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--verde-couve);
+}
+.preco small {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--texto-suave);
+}
+
+/* Navegação de filtros do cardápio: categorias e dias da semana. */
+.nav-cardapio {
+  display: none;
+  position: sticky;
+  top: 0;
+  background: var(--creme);
+  z-index: 30;
+  padding: 20px 0 0;
+  border-bottom: 1px solid var(--creme-escuro);
+}
+/* Lista horizontal dos botões de categoria do cardápio. */
+.abas-categoria {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scrollbar-width: none;
+}
+.abas-categoria::-webkit-scrollbar {
+  display: none;
+}
+/* Botão individual de categoria; a classe .ativa marca o filtro atual. */
+.aba {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 14px;
+  background: var(--branco-arroz);
+  color: var(--texto-suave);
+  border: 1.5px solid var(--creme-escuro);
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.aba:hover {
+  border-color: var(--amarelo-milho);
+  color: var(--texto);
+}
+.aba.ativa {
+  background: var(--marrom-feijao);
+  color: var(--creme);
+  border-color: var(--marrom-feijao);
+}
+
+/* Lista de dias exibida somente ao navegar pelos pratos executivos. */
+.seletor-dias {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 0 0 18px;
+  scrollbar-width: none;
+  animation: deslizarEntrada 0.25s ease;
+}
+.seletor-dias::-webkit-scrollbar {
+  display: none;
+}
+@keyframes deslizarEntrada {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Botão de seleção de um dia da semana. */
+.chip-dia {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border-radius: var(--raio-peq);
+  font-size: 13px;
+  font-weight: 600;
+  background: var(--branco-arroz);
+  border: 1.5px solid var(--creme-escuro);
+  color: var(--texto-suave);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 76px;
+  transition: all 0.18s ease;
+}
+.chip-dia .rotulo-hoje {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--vermelho-telha);
+  font-weight: 800;
+}
+.chip-dia:hover {
+  border-color: var(--amarelo-milho);
+}
+.chip-dia.selecionado {
+  background: var(--verde-couve);
+  border-color: var(--verde-couve);
+  color: var(--branco-arroz);
+}
+.chip-dia.selecionado .rotulo-hoje {
+  color: var(--amarelo-milho-claro);
+}
+
+/* Área principal onde o título e os cartões do cardápio aparecem. */
+main {
+  padding: 36px 0 80px;
+}
+.secao-titulo {
+  font-family: var(--fonte-display);
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.secao-titulo .contagem {
+  font-family: var(--fonte-corpo);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--texto-suave);
+}
+/*--essa seção e que deixa as grade igual do ifood---*/
+/* Grade responsiva que organiza os cartões dos produtos. */
+.grade-pratos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+/* Cartão individual de cada prato, marmita ou bebida. */
+.cartao-prato {
+  background: var(--branco-arroz);
+  border-radius: var(--raio);
+  padding: 14px;
+  box-shadow: 0 2px 10px -4px rgba(43, 29, 20, 0.12);
+  border: 1px solid rgba(43, 29, 20, 0.05);
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  grid-template-rows: auto auto auto 1fr;
+  column-gap: 16px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  animation: surgirCartao 0.4s ease backwards;
+
+  overflow: hidden;
+}
+.cartao-prato:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra);
+}
+/* Imagem do produto, com proporção uniforme dentro dos cartões. */
+.imagem-prato {
+  grid-column: 1;
+  grid-row: 1 / 5;
+
+  width: 130px;
+  height: 100px;
+
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 0;
+
+  background: var(--creme);
+}
+@keyframes surgirCartao {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cartao-topo {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 8px;
+  grid-column: 2;
+  grid-row: 1;
+}
+.cartao-prato h4 {
+  font-family: var(--fonte-display);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.selo-destaque {
+  background: var(--amarelo-milho);
+  color: var(--marrom-feijao-escuro);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  height: fit-content;
+}
+.cartao-prato .desc-prato {
+  color: var(--texto-suave);
+  font-size: 13.5px;
+  flex-grow: 1;
+  margin-bottom: 14px;
+  grid-column: 2;
+  grid-row: 2;
+}
+.etiquetas {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+.etiqueta {
+  font-size: 11px;
+  background: var(--creme);
+  color: var(--verde-couve);
+  padding: 3px 9px;
+  border-radius: 100px;
+  font-weight: 600;
+}
+.cartao-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+}
+
+/* Botão que adiciona o produto selecionado ao carrinho. */
+.btn-adicionar {
+  background: var(--marrom-feijao);
+  color: var(--creme);
+  padding: 9px 16px;
+  border-radius: var(--raio-peq);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition:
+    background 0.18s ease,
+    transform 0.15s ease;
+}
+.btn-adicionar:hover {
+  background: var(--vermelho-telha);
+  transform: translateY(-1px);
+}
+.btn-adicionar svg {
+  width: 15px;
+  height: 15px;
+}
+.btn-adicionar.adicionado {
+  background: var(--verde-couve);
+}
+
+/* Mensagem mostrada quando a busca não encontra nenhum produto. */
+.sem-resultados {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--texto-suave);
+}
+.sem-resultados .emoji {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+/* Camada escura atrás do carrinho, usada ao abrir o painel lateral. */
+.fundo-carrinho {
+  position: fixed;
+  inset: 0;
+  background: rgba(43, 29, 20, 0.5);
+  z-index: 50;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.fundo-carrinho.aberto {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Painel lateral deslizante que contém o resumo do pedido. */
+.painel-carrinho {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(420px, 100%);
+  background: var(--creme);
+  z-index: 51;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+}
+.painel-carrinho.aberto {
+  transform: translateX(0);
+}
+
+/* Cabeçalho do painel com título e botão para fechar o carrinho. */
+.cabecalho-carrinho {
+  padding: 20px 24px;
+  background: var(--marrom-feijao);
+  color: var(--creme);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cabecalho-carrinho h3 {
+  font-family: var(--fonte-display);
+  font-size: 20px;
+  font-weight: 600;
+}
+.fechar-carrinho {
+  color: var(--creme);
+  font-size: 22px;
+  line-height: 1;
+  padding: 4px;
+}
+.fechar-carrinho:hover {
+  color: var(--amarelo-milho);
+}
+
+/* Área rolável que lista os itens adicionados ao pedido. */
+.corpo-carrinho {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px 24px;
+}
+/* Linha de cada produto no carrinho, incluindo quantidade e subtotal. */
+.item-carrinho {
+  display: flex;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--creme-escuro);
+  animation: surgirCartao 0.3s ease;
+}
+.item-carrinho-info {
+  flex-grow: 1;
+}
+.item-carrinho-info h5 {
+  font-size: 14.5px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.item-carrinho-info .preco-unit {
+  font-size: 12.5px;
+  color: var(--texto-suave);
+}
+/* Controles para aumentar ou diminuir a quantidade de um produto. */
+.controles-qtd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.controles-qtd button {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: var(--branco-arroz);
+  border: 1.5px solid var(--creme-escuro);
+  font-weight: 700;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+.controles-qtd button:hover {
+  background: var(--amarelo-milho-claro);
+}
+.controles-qtd .qtd {
+  font-weight: 700;
+  min-width: 16px;
+  text-align: center;
+}
+.item-carrinho-lado {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.subtotal-item {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--verde-couve);
+}
+.remover-item {
+  color: var(--vermelho-telha);
+}
+.remover-item svg {
+  width: 17px;
+  height: 17px;
+}
+.remover-item:hover {
+  color: var(--vermelho-telha-escuro);
+}
+
+/* Estado exibido quando ainda não há itens no carrinho. */
+.carrinho-vazio {
+  text-align: center;
+  padding: 50px 10px;
+  color: var(--texto-suave);
+}
+.carrinho-vazio .emoji {
+  font-size: 46px;
+  margin-bottom: 14px;
+}
+.carrinho-vazio h5 {
+  font-family: var(--fonte-display);
+  font-size: 18px;
+  color: var(--texto);
+  margin-bottom: 6px;
+}
+.carrinho-vazio p {
+  font-size: 13.5px;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+/* Campos para retirada, entrega, endereço e nome do cliente. */
+.opcoes-pedido {
+  padding: 16px 24px 0;
+}
+.grupo-opcao {
+  margin-bottom: 14px;
+}
+.grupo-opcao label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--texto-suave);
+  display: block;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.alternador-tipo {
+  display: flex;
+  gap: 8px;
+}
+.alternador-tipo button {
+  flex: 1;
+  padding: 9px;
+  border-radius: var(--raio-peq);
+  background: var(--branco-arroz);
+  border: 1.5px solid var(--creme-escuro);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-suave);
+}
+.alternador-tipo button.ativo {
+  background: var(--verde-couve);
+  color: var(--branco-arroz);
+  border-color: var(--verde-couve);
+}
+.opcoes-pedido input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: var(--raio-peq);
+  border: 1.5px solid var(--creme-escuro);
+  font-size: 13.5px;
+  font-family: inherit;
+  background: var(--branco-arroz);
+}
+
+/* Rodapé fixo do painel com o total e a ação de finalizar no WhatsApp. */
+.rodape-carrinho {
+  padding: 20px 24px 24px;
+  border-top: 1px solid var(--creme-escuro);
+  background: var(--branco-arroz);
+}
+.linha-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.linha-total span:first-child {
+  color: var(--texto-suave);
+  font-size: 14px;
+}
+.linha-total .valor-total {
+  font-family: var(--fonte-display);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.btn-finalizar {
+  width: 100%;
+  justify-content: center;
+  background: #25d366;
+  color: #fff;
+  padding: 15px;
+  border-radius: var(--raio-peq);
+  font-size: 15px;
+  font-weight: 700;
+}
+.btn-finalizar:hover {
+  background: #1fb958;
+}
+.btn-finalizar svg {
+  width: 20px;
+  height: 20px;
+}
+.btn-finalizar:disabled {
+  background: var(--creme-escuro);
+  color: var(--texto-suave);
+  cursor: not-allowed;
+}
+
+/* Atalho flutuante para iniciar uma conversa no WhatsApp. */
+.whatsapp-flutuante {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 58px;
+  height: 58px;
+  background: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px -6px rgba(37, 211, 102, 0.6);
+  z-index: 35;
+  animation: flutuarBotao 2.6s ease-in-out infinite;
+}
+.whatsapp-flutuante svg {
+  width: 30px;
+  height: 30px;
+}
+.whatsapp-flutuante:hover {
+  transform: scale(1.07);
+}
+@keyframes flutuarBotao {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Rodapé institucional com apresentação, horários e contato. */
+footer {
+  background: var(--marrom-feijao-escuro);
+  color: rgba(251, 243, 227, 0.75);
+  padding: 48px 0 28px;
+}
+/* Grade que separa o conteúdo do rodapé em colunas. */
+.grade-rodape {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.grade-rodape h5 {
+  font-family: var(--fonte-display);
+  color: var(--creme);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+.grade-rodape p,
+.grade-rodape li {
+  font-size: 13.5px;
+  margin-bottom: 8px;
+}
+.marca-rodape {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.marca-rodape span {
+  font-family: var(--fonte-display);
+  color: var(--creme);
+  font-size: 19px;
+  font-weight: 700;
+}
+.linha-rodape {
+  border-top: 1px solid rgba(251, 243, 227, 0.12);
+  padding-top: 20px;
+  font-size: 12.5px;
+  text-align: center;
+  color: rgba(251, 243, 227, 0.5);
+}
