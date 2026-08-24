@@ -158,18 +158,24 @@ header.principal {
   align-items: center;
   gap: 12px;
 }
+/*lugar do selo do restaurante, que pode ser uma foto ou logotipo circular. */
 .marca-selo {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: var(--amarelo-milho);
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
-  flex-shrink: 0;
-  box-shadow: inset 0 0 0 3px var(--marrom-feijao-escuro);
 }
+
+.marca-selo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .marca-texto h1 {
   font-family: var(--fonte-display);
   font-weight: 700;
