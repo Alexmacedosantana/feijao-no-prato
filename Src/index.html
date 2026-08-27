@@ -2839,6 +2839,23 @@
       <div class="corpo-carrinho" id="corpoCarrinho"><!-- itens via JS --></div>
       <div class="opcoes-pedido" id="opcoesPedido" style="display: none">
         <div class="grupo-opcao">
+          <label for="campoNome">Seu nome</label>
+          <input
+            type="text"
+            id="campoNome"
+            placeholder="Como podemos te chamar?"
+          />
+        </div>
+        <div class="grupo-opcao">
+          <label for="campoTelefone">Telefone</label>
+          <input
+            type="tel"
+            id="campoTelefone"
+            placeholder="(00) 00000-0000"
+            inputmode="tel"
+          />
+        </div>
+        <div class="grupo-opcao">
           <label>Forma de entrega</label>
           <div class="alternador-tipo">
             <button type="button" id="btnRetirada" class="ativo">
@@ -2856,12 +2873,45 @@
           />
         </div>
         <div class="grupo-opcao">
-          <label for="campoNome">Seu nome</label>
+          <label>Forma de pagamento</label>
+          <div class="opcoes-pagamento">
+            <label class="opcao-pagamento">
+              <input type="radio" name="formaPagamento" value="pix" checked />
+              <span>Pix</span>
+            </label>
+            <label class="opcao-pagamento">
+              <input type="radio" name="formaPagamento" value="dinheiro" />
+              <span>Dinheiro</span>
+            </label>
+            <label class="opcao-pagamento">
+              <input type="radio" name="formaPagamento" value="debito" />
+              <span>Cartão de Débito</span>
+            </label>
+            <label class="opcao-pagamento">
+              <input type="radio" name="formaPagamento" value="credito" />
+              <span>Cartão de Crédito</span>
+            </label>
+          </div>
+        </div>
+        <div class="aviso-pix" id="avisoPix">
+          Pagamento será realizado via Pix.
+        </div>
+        <div class="grupo-opcao" id="grupoTroco" style="display: none">
+          <label for="campoTroco">Troco para R$</label>
           <input
             type="text"
-            id="campoNome"
-            placeholder="Como podemos te chamar?"
+            id="campoTroco"
+            placeholder="0,00"
+            inputmode="decimal"
           />
+        </div>
+        <div class="grupo-opcao">
+          <label for="campoObservacoes">Observações</label>
+          <textarea
+            id="campoObservacoes"
+            rows="3"
+            placeholder="Ex.: sem cebola, pouco sal ou sem pimenta."
+          ></textarea>
         </div>
       </div>
       <div class="rodape-carrinho" id="rodapeCarrinho" style="display: none">

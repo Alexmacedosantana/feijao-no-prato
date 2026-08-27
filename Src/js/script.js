@@ -40,6 +40,7 @@ let estado = {
   diaSelecionado: diaCardapioAtual,
   termoBusca: "",
   tipoEntrega: "retirada",
+  formaPagamento: "pix",
   carrinho: carregarCarrinho(),
 };
 // Guarda todos os produtos originais antes que a grade seja redesenhada pelos filtros.
@@ -454,7 +455,10 @@ function renderizarCarrinho() {
 
 function atualizarLinkWhatsApp() {
   const nome = document.getElementById("campoNome").value.trim();
+  const telefone = document.getElementById("campoTelefone").value.trim();
   const endereco = document.getElementById("campoEndereco").value.trim();
+  const troco = document.getElementById("campoTroco").value.trim();
+  const observacoes = document.getElementById("campoObservacoes").value.trim();
   const btnFinalizar = document.getElementById("btnFinalizarPedido");
 
   if (estado.carrinho.length === 0) {
@@ -462,21 +466,43 @@ function atualizarLinkWhatsApp() {
     return;
   }
 
-  let mensagem = `Olá! Gostaria de fazer um pedido no *Feijão no Prato* 🍲%0A%0A`;
-  mensagem += `*Itens:*%0A`;
-  estado.carrinho.forEach((item) => {
-    mensagem += `• ${item.quantidade}x ${item.nome} — ${formatarPreco(item.preco * item.quantidade)}%0A`;
-  });
-  mensagem += `%0A*Total: ${formatarPreco(totalCarrinho())}*%0A%0A`;
-  mensagem += `*Forma de entrega:* ${estado.tipoEntrega === "entrega" ? "Entrega" : "Retirar no local"}%0A`;
-  if (estado.tipoEntrega === "entrega" && endereco) {
-    mensagem += `*Endereço:* ${endereco}%0A`;
-  }
-  if (nome) {
-    mensagem += `*Nome:* ${nome}%0A`;
-  }
+  const formasPagamento = {
+    pix: "Pix",
+    dinheiro: "Dinheiro",
+    debito: "Cartão de Débito",
+    credito: "Cartão de Crédito",
+  };
+  const formaEntrega = estado.tipoEntrega === "entrega" ? "Entrega" : "Retirada no local";
+  const divisoria = "────────────────────────";
+  const itens = estado.carrinho.map(
+    (item) => `• ${item.quantidade}x ${item.nome} — ${formatarPreco(item.preco * item.quantidade)}`,
+  );
+  const mensagem = [
+    "🍽️ *NOVO PEDIDO - FEIJÃO NO PRATO*",
+    "",
+    "👤 *CLIENTE*",
+    nome || "Não informado",
+    `📞 *Telefone:* ${telefone || "Não informado"}`,
+    `🚚 *Forma de entrega:* ${formaEntrega}`,
+    ...(estado.tipoEntrega === "entrega" ? [`📍 *Endereço:* ${endereco || "Não informado"}`] : []),
+    `💳 *Forma de pagamento:* ${formasPagamento[estado.formaPagamento]}`,
+    ...(estado.formaPagamento === "dinheiro" && troco ? [`💵 *Troco para:* R$ ${troco}`] : []),
+    "",
+    divisoria,
+    "📦 *ITENS DO PEDIDO*",
+    ...itens,
+    "",
+    divisoria,
+    "💰 *TOTAL DO PEDIDO*",
+    formatarPreco(totalCarrinho()),
+    "",
+    divisoria,
+    "📝 *OBSERVAÇÕES*",
+    observacoes || "Nenhuma observação.",
+    ...(estado.formaPagamento === "pix" ? ["", "Pagamento será realizado via Pix."] : []),
+  ].join("\n");
 
-  btnFinalizar.href = `https://wa.me/${CONFIG.numeroWhatsApp}?text=${mensagem}`;
+  btnFinalizar.href = `https://wa.me/${CONFIG.numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
 }
 
 function atualizarAvisoFuncionamento() {
@@ -702,6 +728,8 @@ function inicializar() {
   const btnRetirada = document.getElementById("btnRetirada");
   const btnEntrega = document.getElementById("btnEntrega");
   const grupoEndereco = document.getElementById("grupoEndereco");
+  const grupoTroco = document.getElementById("grupoTroco");
+  const avisoPix = document.getElementById("avisoPix");
   btnRetirada.addEventListener("click", () => {
     estado.tipoEntrega = "retirada";
     btnRetirada.classList.add("ativo");
@@ -716,13 +744,21 @@ function inicializar() {
     grupoEndereco.style.display = "block";
     atualizarLinkWhatsApp();
   });
-// Atualiza o link do WhatsApp sempre que os campos de nome ou endereço forem alterados.
-  document
-    .getElementById("campoNome")
-    .addEventListener("input", atualizarLinkWhatsApp);
-  document
-    .getElementById("campoEndereco")
-    .addEventListener("input", atualizarLinkWhatsApp);
+
+  // Mostra somente os campos complementares da forma de pagamento escolhida.
+  document.querySelectorAll('input[name="formaPagamento"]').forEach((opcao) => {
+    opcao.addEventListener("change", () => {
+      estado.formaPagamento = opcao.value;
+      avisoPix.style.display = opcao.value === "pix" ? "block" : "none";
+      grupoTroco.style.display = opcao.value === "dinheiro" ? "block" : "none";
+      atualizarLinkWhatsApp();
+    });
+  });
+
+  // Atualiza o link do WhatsApp conforme o cliente preenche os dados do pedido.
+  ["campoNome", "campoTelefone", "campoEndereco", "campoTroco", "campoObservacoes"].forEach(
+    (id) => document.getElementById(id).addEventListener("input", atualizarLinkWhatsApp),
+  );
 
 
 document.addEventListener("DOMContentLoaded", inicializar);
