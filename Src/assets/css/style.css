@@ -219,7 +219,7 @@ header.principal {
 .contador-carrinho {
   position: absolute;
   top: -8px;
-  right: -8px;
+  right: +9px;
   background: var(--amarelo-milho);
   color: var(--marrom-feijao-escuro);
   font-size: 11px;
