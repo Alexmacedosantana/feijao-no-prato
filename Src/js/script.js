@@ -12,7 +12,7 @@
    ========================================================================= */
 //configurações gerais do cardápio, incluindo número do WhatsApp e horários de funcionamento
 const CONFIG = {
-  numeroWhatsApp: "5568999788376",
+  numeroWhatsApp: "556899350643",
   horarios: {
     0: { abre: 11, fecha: 14 },
     1: { abre: 11, fecha: 14 },
