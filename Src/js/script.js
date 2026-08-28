@@ -452,7 +452,7 @@ function renderizarCarrinho() {
     formatarPreco(totalCarrinho());
   atualizarLinkWhatsApp();
 }
-
+//função que atualiza o link do botão de finalizar pedido no WhatsApp, incluindo os dados do cliente, itens do carrinho, forma de entrega e pagamento, e observações
 function atualizarLinkWhatsApp() {
   const nome = document.getElementById("campoNome").value.trim();
   const telefone = document.getElementById("campoTelefone").value.trim();
@@ -465,7 +465,7 @@ function atualizarLinkWhatsApp() {
     btnFinalizar.removeAttribute("href");
     return;
   }
-
+// Define as formas de pagamento disponíveis e seus nomes legíveis.
   const formasPagamento = {
     pix: "Pix",
     dinheiro: "Dinheiro",
