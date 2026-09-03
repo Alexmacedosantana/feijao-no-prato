@@ -14,13 +14,13 @@
 const CONFIG = {
   numeroWhatsApp: "556899350643",
   horarios: {
-    0: { abre: 11, fecha: 14 },
-    1: { abre: 11, fecha: 14 },
-    2: { abre: 11, fecha: 14 },
-    3: { abre: 11, fecha: 14 },
-    4: { abre: 11, fecha: 14 },
-    5: { abre: 11, fecha: 14 },
-    6: { abre: 11, fecha: 14 },
+    0: { abre: 9, fecha: 14 },
+    1: { abre: 9, fecha: 14 },
+    2: { abre: 9, fecha: 14 },
+    3: { abre: 9, fecha: 14 },
+    4: { abre: 9, fecha: 14 },
+    5: { abre: 9, fecha: 14 },
+    6: { abre: 9, fecha: 14 },
   }
 };
 

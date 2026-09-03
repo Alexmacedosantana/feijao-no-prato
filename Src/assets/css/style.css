@@ -1112,6 +1112,7 @@ footer {
   gap: 32px;
   margin-bottom: 32px;
 }
+/* Título de cada coluna do rodapé com fonte display e cor creme. */
 .grade-rodape h5 {
   font-family: var(--fonte-display);
   color: var(--creme);
@@ -1119,23 +1120,44 @@ footer {
   font-weight: 600;
   margin-bottom: 14px;
 }
+
+/* Parágrafo e itens de lista do rodapé com tamanho de fonte reduzido. */
 .grade-rodape p,
 .grade-rodape li {
   font-size: 13.5px;
   margin-bottom: 8px;
 }
+/* Lista de links do rodapé, com espaçamento entre os itens. */
+.instagram-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/*Ícone do Instagram com tamanho uniforme e proporção preservada. -*/
+.instagram-link img {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+/* Linha de marcação do rodapé, com logotipo e direitos autorais. */
 .marca-rodape {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 12px;
 }
+/* Logotipo do rodapé com tamanho uniforme e proporção preservada. */
 .marca-rodape span {
   font-family: var(--fonte-display);
   color: var(--creme);
   font-size: 19px;
   font-weight: 700;
 }
+
+/* Linha de rodapé com borda superior, espaçamento e alinhamento central. */
 .linha-rodape {
   border-top: 1px solid rgba(251, 243, 227, 0.12);
   padding-top: 20px;
