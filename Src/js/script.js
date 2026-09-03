@@ -190,15 +190,21 @@ function renderizarPratoDoDia() {
     container.innerHTML = `<p>Prato do dia não encontrado.</p>`;
     return;
   }
-
+  
+  // Renderiza o prato do dia com imagem, nome, descrição, preço e botão de adicionar ao carrinho
   container.innerHTML = `
     <div class="imagem-prato-do-dia">
       <img src="${prato.imagem}" alt="${prato.nome}" />
       <h3>${prato.nome}</h3>
     </div>
+
     <div class="selo-carimbo">Prato<br>do dia</div>
-    <p class="dia-label">${NOMES_DIAS[estado.diaSelecionado]}-feira</p>
+   <p class="dia-label">${
+  estado.diaSelecionado === 6
+    ? "Sábado"
+    : `${NOMES_DIAS[estado.diaSelecionado]}-feira`}</p>
     <p class="desc-prato">${prato.desc}</p>
+    
     <div class="linha-preco-add">
       <span class="preco">${formatarPreco(prato.preco)} <small>/ prato</small></span>
       <button class="btn-adicionar" data-id="${prato.id}">
