@@ -183,7 +183,7 @@ function renderizarSeletorDias() {
 //função que renderiza o prato do dia, mostrando o prato executivo do dia atual, ou o primeiro prato executivo encontrado caso não haja prato para o dia atual
 function renderizarPratoDoDia() {
   const prato =
-    obterExecutivoPorDia(diaCardapioAtual) ||
+    obterExecutivoPorDia(estado.diaSelecionado) ||
     todosOsItens().find((item) => item.categoria === "executivos");
   const container = document.getElementById("cartaoPratoDoDia");
   if (!prato) {
@@ -192,9 +192,12 @@ function renderizarPratoDoDia() {
   }
 
   container.innerHTML = `
+    <div class="imagem-prato-do-dia">
+      <img src="${prato.imagem}" alt="${prato.nome}" />
+      <h3>${prato.nome}</h3>
+    </div>
     <div class="selo-carimbo">Prato<br>do dia</div>
-    <p class="dia-label">${NOMES_DIAS[diaCardapioAtual]}-feira</p>
-    <h3>${prato.nome}</h3>
+    <p class="dia-label">${NOMES_DIAS[estado.diaSelecionado]}-feira</p>
     <p class="desc-prato">${prato.desc}</p>
     <div class="linha-preco-add">
       <span class="preco">${formatarPreco(prato.preco)} <small>/ prato</small></span>
@@ -703,6 +706,7 @@ function inicializar() {
     if (!botaoDia) return;
     estado.diaSelecionado = Number(botaoDia.dataset.dia);
     renderizarGrade();
+    renderizarPratoDoDia();
   });
 
   const painel = document.getElementById("painelCarrinho");
