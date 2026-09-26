@@ -3,15 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Feijão no Prato" />
+    <meta
+      name="description"
+      content="Feijão no Prato é restaurante de comida caseira em Rio Branco, AC, com pratos executivos, marmitas, sobremesas e bebidas. Peça pelo WhatsApp e veja o cardápio."
+      />
+    <meta
+      name="keywords"
+      content="Feijão no Prato, comida caseira Rio Branco, restaurante em Rio Branco, marmitas Rio Branco, pratos executivos Rio Branco, restaurante de comida caseira AC"
+    />
 
-    <title>Feijão no Prato | Comida caseira todos os dias</title>
-     <meta name="description" content="Feijão no Prato - restaurante de comida caseira. Pratos executivos, marmitas, bebidas e sobremesas. Peça pelo WhatsApp."/>
+    <title>
+      Feijão no Prato | Restaurante de comida caseira em Rio Branco, AC
+    </title>
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Feijão no Prato | Restaurante de comida caseira em Rio Branco, AC"
+    />
+    <meta
+      property="og:description"
+      content="Restaurante de comida caseira em Rio Branco, AC com pratos executivos, marmitas, bebidas e sobremesas."
+    />
+    <meta property="og:url" content="https://feijãoprato.com.br/" />
+    <meta
+      property="og:image"
+      content="https://feijãoprato.com.br/assets/img/logo-feijao-no-prato.webp"
+    />
+    <meta property="og:locale" content="pt_BR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Feijão no Prato | Restaurante em Rio Branco, AC"
+    />
+    <meta
+      name="twitter:description"
+      content="Comida caseira, marmitas e pratos executivos em Rio Branco, AC."
+    />
+    <link rel="canonical" href="https://feijãoprato.com.br/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link  href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsivel.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Feijão no Prato",
+        "image": "https://feijãoprato.com.br/assets/img/logo-feijao-no-prato.webp",
+        "description": "Restaurante de comida caseira em Rio Branco, AC, com pratos executivos, marmitas, bebidas e sobremesas.",
+        "servesCuisine": "Comida caseira",
+        "telephone": "+55-68-99350-643",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Rua Coronel José Galdino, 315",
+          "addressLocality": "Rio Branco",
+          "addressRegion": "AC",
+          "addressCountry": "BR"
+        },
+        "priceRange": "R$",
+        "openingHours": ["Mo-Sa 09:00-14:00"],
+        "url": "https://feijãoprato.com.br/",
+        "sameAs": ["https://www.instagram.com/feijaonoprato_restaurante/"]
+      }
+    </script>
   </head>
   <body>
     <div class="conteudo-site">
@@ -51,7 +112,6 @@
               stroke-linecap="round"
               stroke-linejoin="round"
             >
-           
               <circle cx="9" cy="21" r="1" />
               <circle cx="20" cy="21" r="1" />
               <path
@@ -86,11 +146,16 @@
       <!-- ================= MENU PRINCIPAL ================= -->
       <nav class="menu-principal" aria-label="Menu principal">
         <div class="container">
-
           <ul id="navMenu" class="menu nav-links nav-menu">
-            <li> <a href="#cardapio" data-categoria-menu="todos">Cardápio</a> </li>
-            <li> <a href="#cardapio" data-categoria-menu="executivos">marmitas</a></li>
-            <li> <a href="#cardapio" data-categoria-menu="bebidas">Bebidas</a> </li>
+            <li>
+              <a href="#cardapio" data-categoria-menu="todos">Cardápio</a>
+            </li>
+            <li>
+              <a href="#cardapio" data-categoria-menu="executivos">marmitas</a>
+            </li>
+            <li>
+              <a href="#cardapio" data-categoria-menu="bebidas">Bebidas</a>
+            </li>
             <li><a href="#contato">Contato</a></li>
           </ul>
         </div>
@@ -101,9 +166,11 @@
         <div class="container hero-grade">
           <div>
             <p class="hero-eyebrow">Cardápio digital</p>
-            <h2>Sabor de casa,<br />direto no seu prato.</h2>
+            <h2>Restaurante de comida caseira em Rio Branco, AC.</h2>
             <p class="descricao">
-              Pratos executivos, marmitas prontas, bebidas geladas. Monte seu pedido e finalize em segundos pelo WhatsApp.
+              Pratos executivos, marmitas prontas, bebidas geladas e sobremesas
+              caseiras. Faça seu pedido pelo WhatsApp e aproveite o melhor da
+              comida de casa em Rio Branco.
             </p>
             <div class="hero-ctas">
               <a href="#cardapio" class="btn btn-primario"
@@ -117,6 +184,19 @@
           <div class="carimbo-prato-dia" id="cartaoPratoDoDia">
             <!-- preenchido via JS -->
           </div>
+        </div>
+      </section>
+
+      <section class="sobre-restaurante" aria-label="Sobre o Feijão no Prato">
+        <div class="container">
+          <h2>Comida caseira, marmitas e pratos executivos em Rio Branco</h2>
+          <p>
+            O Feijão no Prato é um restaurante de comida caseira em Rio Branco,
+            Acre, com pratos executivos, marmitas e bebidas feitas
+            para quem busca sabor de família, praticidade e atendimento
+            acolhedor. Trabalhamos com variedade de opções todos os dias e
+            atendimento por WhatsApp para pedido rápido e fácil.
+          </p>
         </div>
       </section>
 
@@ -158,7 +238,8 @@
               <img
                 class="imagem-prato"
                 src="assets/img/carne-com-toscana.webp"
-                alt="carne toscana" />
+                alt="carne toscana"
+              />
               <div class="cartao-topo">
                 <h4>carne toscana</h4>
               </div>
@@ -193,8 +274,8 @@
                 <h4>assado de panela</h4>
               </div>
               <p class="desc-prato">
-                assado de panela (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                assado de panela (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">assado de panela</span>
@@ -226,8 +307,8 @@
                 <h4>figado acebolado</h4>
               </div>
               <p class="desc-prato">
-                figado acebolado (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita).
+                figado acebolado (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana frita).
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">figado acebolado</span>
@@ -259,8 +340,8 @@
                 <h4>galinha picante</h4>
               </div>
               <p class="desc-prato">
-                galinha picante o (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                galinha picante o (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">galinha picante </span>
@@ -292,8 +373,8 @@
                 <h4>Costela guisada</h4>
               </div>
               <p class="desc-prato">
-                Costela guisada com (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                Costela guisada com (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">Costela guisada </span>
@@ -325,8 +406,8 @@
                 <h4>Bife acebolado</h4>
               </div>
               <p class="desc-prato">
-                Bife acebolado com (arro zou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                Bife acebolado com (arro zou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">Bife acebolado</span>
@@ -358,8 +439,8 @@
                 <h4>file de frango frito</h4>
               </div>
               <p class="desc-prato">
-                file de frango frito (arroz ou Baião, macarrão,Salada,farofa,Feijão
-                E Banana frita.)
+                file de frango frito (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">file de frango frito </span>
@@ -454,8 +535,8 @@
                 <h4>macarrão parmegiana</h4>
               </div>
               <p class="desc-prato">
-                macarrão parmegiana( arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                macarrão parmegiana( arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">macarrão parmegiana</span>
@@ -587,8 +668,8 @@
                 <h4>carne chapa Acebolada</h4>
               </div>
               <p class="desc-prato">
-                carne chapa Acebolada (arroz ou Baião, macarrão,Salada,farofa,Feijão
-                E Banana frita.)
+                carne chapa Acebolada (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> carne chapa Acebolada</span>
@@ -653,8 +734,8 @@
                 <h4>assado de panela</h4>
               </div>
               <p class="desc-prato">
-                assado de panela (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                assado de panela (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> assado de panela</span>
@@ -716,8 +797,8 @@
                 <h4>figado acebolado</h4>
               </div>
               <p class="desc-prato">
-                figado acebolado (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                figado acebolado (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> figado acebolado</span>
@@ -782,8 +863,8 @@
                 <h4>panelada da casa</h4>
               </div>
               <p class="desc-prato">
-                panelada da casa (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                panelada da casa (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> panelada da casa</span>
@@ -883,8 +964,8 @@
                 <h4>bife acebolado</h4>
               </div>
               <p class="desc-prato">
-                bife acebolado acebolado (arroz ou baião, macarrão, salada, farofa,
-                feijão e banana frita.)
+                bife acebolado acebolado (arroz ou baião, macarrão, salada,
+                farofa, feijão e banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> bife acebolado </span>
@@ -916,8 +997,8 @@
                 <h4>Costelinha de tambaqui</h4>
               </div>
               <p class="desc-prato">
-                Costelinha de tambaqui, (arroz ou baião, macarrão, salada, farofa,
-                feijão e banana frita.)
+                Costelinha de tambaqui, (arroz ou baião, macarrão, salada,
+                farofa, feijão e banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">Costelinha de tambaqui</span>
@@ -949,8 +1030,8 @@
                 <h4>Calabresa acebolada</h4>
               </div>
               <p class="desc-prato">
-                Calabresa acebolada (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                Calabresa acebolada (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">Calabresa aceboladao</span>
@@ -1015,8 +1096,8 @@
                 <h4>Almôndegas ao Molho</h4>
               </div>
               <p class="desc-prato">
-                Almôndegas ao Molho (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                Almôndegas ao Molho (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> Almôndegas ao Molho</span>
@@ -1081,8 +1162,8 @@
                 <h4>Figado acebolado</h4>
               </div>
               <p class="desc-prato">
-                Figado acebolado (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                Figado acebolado (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> Figado acebolado</span>
@@ -1114,8 +1195,8 @@
                 <h4>carne com toscana</h4>
               </div>
               <p class="desc-prato">
-                carne com toscanao (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                carne com toscanao (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> carne com toscana</span>
@@ -1147,8 +1228,8 @@
                 <h4>assado de panela</h4>
               </div>
               <p class="desc-prato">
-                assado de panela (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                assado de panela (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> assado de panela</span>
@@ -1346,8 +1427,8 @@
                 <h4>Estrogonofe de Carne</h4>
               </div>
               <p class="desc-prato">
-                Estrogonofe de carne (arroz ou Baião, macarrão,Salada,farofa,Feijão
-                E Banana frita.)
+                Estrogonofe de carne (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> estrogonofe de carne</span>
@@ -1412,8 +1493,8 @@
                 <h4>Almôndegas ao molho</h4>
               </div>
               <p class="desc-prato">
-                almôndegas ao molho (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                almôndegas ao molho (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> almôndegas ao molho</span>
@@ -1514,8 +1595,8 @@
                 <h4>carne fritas</h4>
               </div>
               <p class="desc-prato">
-                carne fritas (arroz ou Baião, macarrão,Salada,farofa,Feijão E Banana
-                frita.)
+                carne fritas (arroz ou Baião, macarrão,Salada,farofa,Feijão E
+                Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> carnes fritas</span>
@@ -1544,8 +1625,8 @@
                 <h4>Assado de Panela</h4>
               </div>
               <p class="desc-prato">
-                Assado de Panela (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                Assado de Panela (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> Assado de Panela</span>
@@ -1577,8 +1658,8 @@
                 <h4>macarrão parmegiana</h4>
               </div>
               <p class="desc-prato">
-                Macarrão parmegiana  (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                Macarrão parmegiana (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">Macarrão parmegiana</span>
@@ -1644,8 +1725,8 @@
                 <h4>Assado de Panela</h4>
               </div>
               <p class="desc-prato">
-                assado de panela (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                assado de panela (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">assado de panela</span>
@@ -1802,8 +1883,7 @@
                 <h4>carne Chapa</h4>
               </div>
               <p class="desc-prato">
-                carne Chapa (arroz branco ou Baião, 
-                Farofa, macarrão feijão e
+                carne Chapa (arroz branco ou Baião, Farofa, macarrão feijão e
                 Banana Frita salada.)
               </p>
               <div class="etiquetas">
@@ -1863,8 +1943,8 @@
                 <h4>carne com Toscana</h4>
               </div>
               <p class="desc-prato">
-                carne com Toscana( Arroz ou Baião Macarrão, salada ,farofa,Feijão
-                E Banana frita)
+                carne com Toscana( Arroz ou Baião Macarrão, salada
+                ,farofa,Feijão E Banana frita)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">carne com Toscana</span>
@@ -1898,8 +1978,7 @@
                 feijão e Banana frita salada.)
               </p>
               <div class="etiquetas">
-                <span class="etiqueta" >Figado acebolado </span
-                >""
+                <span class="etiqueta">Figado acebolado </span>""
               </div>
               <div class="cartao-rodape">
                 <span class="preco">R$ 20,00</span>
@@ -1961,8 +2040,8 @@
                 <h4>assado de panela</h4>
               </div>
               <p class="desc-prato">
-                assado de panela (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana.)
+                assado de panela (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta"> especial de segunda-feira</span>
@@ -2123,8 +2202,8 @@
                 <h4>Figado acebolado</h4>
               </div>
               <p class="desc-prato">
-                figado acebolado (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana.)
+                figado acebolado (arroz ou Baião, macarrão,Salada,farofa,Feijão
+                E Banana.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">especial de segunda-feira</span>
@@ -2219,8 +2298,8 @@
                 <h4>file de grango frito</h4>
               </div>
               <p class="desc-prato">
-                File de frango frito (arroz ou Baião, macarrão,Salada,farofa,Feijão
-                E Banana.)
+                File de frango frito (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">especial de segunda-feira</span>
@@ -2252,8 +2331,8 @@
                 <h4>Amondegas ao Molho</h4>
               </div>
               <p class="desc-prato">
-                Amondegas ao molho (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana.)
+                Amondegas ao molho (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">especial de segunda-feira</span>
@@ -2285,8 +2364,8 @@
                 <h4>cozidão de legumes</h4>
               </div>
               <p class="desc-prato">
-                cozidão de legumes (arroz ou Baião, macarrão,Salada,farofa,Feijão E
-                Banana frita.)
+                cozidão de legumes (arroz ou Baião,
+                macarrão,Salada,farofa,Feijão E Banana frita.)
               </p>
               <div class="etiquetas">
                 <span class="etiqueta">especial de segunda-feira</span>
@@ -2307,29 +2386,32 @@
               class="cartao-prato"
               data-categoria="bebidas"
               data-busca="suco de hortelã com abacaxi 400ml"
-              data-preco="12.00" >
+              data-preco="12.00"
+            >
               <img
                 class="imagem-prato"
                 src="assets/img/img.bebidas/ABACAXI-COM-HORTELA.webp"
-                alt="Suco de Laranja Natural"/>
+                alt="Suco de Laranja Natural"
+              />
               <div class="cartao-topo">
                 <h4>Suco de Hortelã com Abacaxi</h4>
               </div>
-              <p class="desc-prato">
-               Suco de Hortelã com Abacaxi 400ml.
-              </p>
+              <p class="desc-prato">Suco de Hortelã com Abacaxi 400ml.</p>
               <div class="etiquetas">
                 <span class="etiqueta">natural</span>
               </div>
               <div class="cartao-rodape">
                 <span class="preco">R$ 12,00</span>
-                <button class="btn-adicionar" data-id="bebida-Hortelã com Abacaxi">
+                <button
+                  class="btn-adicionar"
+                  data-id="bebida-Hortelã com Abacaxi"
+                >
                   Adicionar
                 </button>
               </div>
             </article>
 
-             <article
+            <article
               class="cartao-prato"
               data-categoria="bebidas"
               data-busca="suco de acerola 400ml"
@@ -2343,9 +2425,7 @@
               <div class="cartao-topo">
                 <h4>Suco de acerola</h4>
               </div>
-              <p class="desc-prato">
-               suco de acerola 400ml.
-              </p>
+              <p class="desc-prato">suco de acerola 400ml.</p>
               <div class="etiquetas">
                 <span class="etiqueta">natural</span>
               </div>
@@ -2357,8 +2437,7 @@
               </div>
             </article>
 
-
-             <article
+            <article
               class="cartao-prato"
               data-categoria="bebidas"
               data-busca="suco de Graviola 400ml"
@@ -2372,9 +2451,7 @@
               <div class="cartao-topo">
                 <h4>suco de Graviola</h4>
               </div>
-              <p class="desc-prato">
-               suco de Graviola 400ml.
-              </p>
+              <p class="desc-prato">suco de Graviola 400ml.</p>
               <div class="etiquetas">
                 <span class="etiqueta">natural</span>
               </div>
@@ -2386,7 +2463,7 @@
               </div>
             </article>
 
-             <article
+            <article
               class="cartao-prato"
               data-categoria="bebidas"
               data-busca="suco de cajú 400ml"
@@ -2400,9 +2477,7 @@
               <div class="cartao-topo">
                 <h4>Suco de cajú</h4>
               </div>
-              <p class="desc-prato">
-               suco de cajú 400ml.
-              </p>
+              <p class="desc-prato">suco de cajú 400ml.</p>
               <div class="etiquetas">
                 <span class="etiqueta">natural</span>
               </div>
@@ -2413,7 +2488,6 @@
                 </button>
               </div>
             </article>
-
 
             <article
               class="cartao-prato"
@@ -2429,9 +2503,7 @@
               <div class="cartao-topo">
                 <h4>Suco de cajá Natural</h4>
               </div>
-              <p class="desc-prato">
-              SUCO DE CAJÁ, 400ml.
-              </p>
+              <p class="desc-prato">SUCO DE CAJÁ, 400ml.</p>
               <div class="etiquetas">
                 <span class="etiqueta"> natural</span>
               </div>
@@ -2457,9 +2529,7 @@
               <div class="cartao-topo">
                 <h4>suco de cupuaçu</h4>
               </div>
-              <p class="desc-prato">
-                suco de cupuaçu 400ml.
-              </p>
+              <p class="desc-prato">suco de cupuaçu 400ml.</p>
               <div class="etiquetas">
                 <span class="etiqueta">suco de cupuaçu</span>
               </div>
@@ -2521,9 +2591,9 @@
               </div>
             </article>
 
-       <!--------------------------------Refrigerantes------------------------------------------->
+            <!--------------------------------Refrigerantes------------------------------------------->
 
-             <article
+            <article
               class="cartao-prato"
               data-categoria="bebidas"
               data-busca="coca-cola zero 350ml"
@@ -2537,9 +2607,7 @@
               <div class="cartao-topo">
                 <h4>coca-cola zero</h4>
               </div>
-              <p class="desc-prato">
-              coca-cola, 350ml.
-              </p>
+              <p class="desc-prato">coca-cola, 350ml.</p>
               <div class="etiquetas">
                 <span class="etiqueta"> refrigerante</span>
               </div>
@@ -2551,8 +2619,7 @@
               </div>
             </article>
 
-
-             <article
+            <article
               class="cartao-prato"
               data-categoria="bebidas"
               data-busca="coca-cola zero 600ml"
@@ -2566,9 +2633,7 @@
               <div class="cartao-topo">
                 <h4>coca-cola zero</h4>
               </div>
-              <p class="desc-prato">
-              coca-cola, 600ml.
-              </p>
+              <p class="desc-prato">coca-cola, 600ml.</p>
               <div class="etiquetas">
                 <span class="etiqueta"> refrigerante</span>
               </div>
@@ -2594,9 +2659,7 @@
               <div class="cartao-topo">
                 <h4>coca-cola</h4>
               </div>
-              <p class="desc-prato">
-              coca-cola, 1L.
-              </p>
+              <p class="desc-prato">coca-cola, 1L.</p>
               <div class="etiquetas">
                 <span class="etiqueta"> refrigerante</span>
               </div>
@@ -2622,9 +2685,7 @@
               <div class="cartao-topo">
                 <h4>fanta laranja lata</h4>
               </div>
-              <p class="desc-prato">
-              fanta laranja lata, 350ml.
-              </p>
+              <p class="desc-prato">fanta laranja lata, 350ml.</p>
               <div class="etiquetas">
                 <span class="etiqueta"> refrigerante</span>
               </div>
@@ -2648,23 +2709,24 @@
                 alt=" guaranar antatica lata"
               />
               <div class="cartao-topo">
-                <h4> guaraná antartica lata</h4>
+                <h4>guaraná antartica lata</h4>
               </div>
-              <p class="desc-prato">
-              guaraná antatica lata 350ml
-              </p>
+              <p class="desc-prato">guaraná antatica lata 350ml</p>
               <div class="etiquetas">
                 <span class="etiqueta"> refrigerante</span>
               </div>
               <div class="cartao-rodape">
                 <span class="preco">R$ 7,00</span>
-                <button class="btn-adicionar" data-id="guaraná antartica de 350ml">
+                <button
+                  class="btn-adicionar"
+                  data-id="guaraná antartica de 350ml"
+                >
                   Adicionar
                 </button>
               </div>
             </article>
 
-             <article
+            <article
               class="cartao-prato"
               data-categoria="bebidas"
               data-busca="fanta laranja de 1L"
@@ -2678,9 +2740,7 @@
               <div class="cartao-topo">
                 <h4>fanta laranja de 1L</h4>
               </div>
-              <p class="desc-prato">
-              fanta laranja.
-              </p>
+              <p class="desc-prato">fanta laranja.</p>
               <div class="etiquetas">
                 <span class="etiqueta"> refrigerante</span>
               </div>
@@ -2692,7 +2752,7 @@
               </div>
             </article>
 
-             <article
+            <article
               class="cartao-prato"
               data-categoria="bebidas"
               data-busca="água com gás"
@@ -2706,9 +2766,7 @@
               <div class="cartao-topo">
                 <h4>água com gás</h4>
               </div>
-              <p class="desc-prato">
-              água com gás.
-              </p>
+              <p class="desc-prato">água com gás.</p>
               <div class="etiquetas">
                 <span class="etiqueta">água</span>
               </div>
@@ -2720,7 +2778,7 @@
               </div>
             </article>
 
-              <article
+            <article
               class="cartao-prato"
               data-categoria="bebidas"
               data-busca="água sem gás"
@@ -2734,9 +2792,7 @@
               <div class="cartao-topo">
                 <h4>água sem gás</h4>
               </div>
-              <p class="desc-prato">
-              água sem gás.
-              </p>
+              <p class="desc-prato">água sem gás.</p>
               <div class="etiquetas">
                 <span class="etiqueta">água</span>
               </div>
@@ -2747,7 +2803,6 @@
                 </button>
               </div>
             </article>
-
           </div>
         </div>
       </main>
@@ -2786,19 +2841,21 @@
                   href="https://www.instagram.com/feijaonoprato_restaurante/"
                   target="_blank"
                   rel="noopener"
-                  aria-label="Instagram Feijão no Prato"  >
+                  aria-label="Instagram Feijão no Prato"
+                >
                   <img
                     src="assets/img/imagen instagran.webp"
                     alt=""
-                    aria-hidden="true" />
-                 INSTAGRAM
+                    aria-hidden="true"
+                  />
+                  INSTAGRAM
                 </a>
               </p>
             </div>
           </div>
           <div class="linha-rodape">
-            © <span id="anoAtual"></span> Alex macêdo santana oliveira. Todos os direitos
-            reservados.
+            © <span id="anoAtual"></span> Alex macêdo santana oliveira. Todos os
+            direitos reservados.
           </div>
         </div>
       </footer>
